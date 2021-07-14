@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  justify-content: space-evenly;
+}
+.image {
+  width: 5rem;
+  margin-bottom: 2rem;
+}
+@media (max-width: 760px) {
+  h1 {
+    font-size: 1.4rem;
+  }
+}
