@@ -1,92 +1,73 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../Task/AddTasks.css';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 const AddTask = (props) => {
-  const [enteredTask, setEnteredTask] = useState('');
-  const [enteredTimeStart, setenteredTimeStart] = useState('');
-  const [enteredTimeEnd, setenteredTimeEnd] = useState('');
-
-  // const [isValid, setIsValid] = useState(true);
-
-  const handlerTask = (e) => {
-    setEnteredTask(e.target.value);
+  const initialValues = {
+    title: '',
+    timeStart: '',
+    timeEnd: '',
   };
-
-  const handlerTimeStart = (e) => {
-    setenteredTimeStart(e.target.value);
-  };
-  const handlerTimeEnd = (e) => {
-    setenteredTimeEnd(e.target.value);
-  };
-  const handlerSubmit = (e) => {
-    e.preventDefault();
-
-    if (
-      enteredTask.trim().length === 0 ||
-      enteredTimeStart.trim().length === 0 ||
-      enteredTimeEnd.trim().length === 0
-    ) {
-      alert('All fields are mandatory');
-      return;
-    }
-
+  const validationSchema = Yup.object({
+    title: Yup.string().required('Required'),
+    timeStart: Yup.string().required('Required'),
+    timeEnd: Yup.string().required('Required'),
+  });
+  const onSubmit = (values, { resetForm }) => {
     const taskData = {
-      title: enteredTask,
-      timeStart: enteredTimeStart,
-      timeEnd: enteredTimeEnd,
+      title: values.title,
+      timeStart: values.timeStart,
+      timeEnd: values.timeEnd,
     };
     props.addTask(taskData);
-
-    setEnteredTask('');
-    setenteredTimeStart('');
-    setenteredTimeEnd('');
+    resetForm({ values: '' });
   };
-  // const inputClasses = isValid
-  //   ? 'new-task_control'
-  //   : 'new-task_control invalid';
+
   return (
-    <div className='add-form'>
-      <form onSubmit={handlerSubmit}>
-        <div className='new-task_controls'>
-          <div className='new-task_control'>
-            <label>Task </label>
-            <input
-              type='text'
-              name='task'
-              placeholder='Add your task'
-              value={enteredTask}
-              onChange={handlerTask}
-              autocomplete='off'
-            />
-            {/* {!isValid && <p className='error-text'>Field must not be empty</p>} */}
-          </div>
-          <div className='new-task_control'>
-            <label>Time Start</label>
-            <input
-              type='text'
-              name='timeStart'
-              placeholder='When do you want to start'
-              value={enteredTimeStart}
-              onChange={handlerTimeStart}
-              autocomplete='off'
-            />
-          </div>
-          <div className='new-task_control'>
-            <label>Time End</label>
-            <input
-              type='text'
-              name='timeEnd'
-              placeholder='When do you want to finish'
-              value={enteredTimeEnd}
-              onChange={handlerTimeEnd}
-              autocomplete='off'
-            />
-          </div>
-        </div>
-        <div className='new-task_actions'>
-          <button type='submit'>Add Task</button>
-        </div>
-      </form>
-    </div>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
+      validateOnMount
+    >
+      {(formik) => {
+        return (
+          <Form>
+            <div className='new-task_controls'>
+              <div className='new-task_control'>
+                <label>Task </label>
+                <Field type='text' name='title' autoComplete='off' />
+                <br></br>
+                <ErrorMessage name='title'>
+                  {(msg) => <p className='error-text'>{msg}</p>}
+                </ErrorMessage>
+              </div>
+              <div className='new-task_control'>
+                <label>Time Start</label>
+                <Field type='time' name='timeStart' autoComplete='off' />
+                <br></br>
+                <ErrorMessage name='timeStart'>
+                  {(msg) => <p className='error-text'>{msg}</p>}
+                </ErrorMessage>
+              </div>
+              <div className='new-task_control'>
+                <label>Time End</label>
+                <Field type='time' name='timeEnd' autoComplete='off' />
+                <br></br>
+                <ErrorMessage name='timeEnd'>
+                  {(msg) => <p className='error-text'>{msg}</p>}
+                </ErrorMessage>
+              </div>
+            </div>
+            <div className='new-task_actions'>
+              <button type='submit' disabled={!formik.isValid}>
+                Add Task
+              </button>
+            </div>
+          </Form>
+        );
+      }}
+    </Formik>
   );
 };
 
