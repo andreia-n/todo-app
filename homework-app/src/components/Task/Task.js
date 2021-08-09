@@ -7,12 +7,8 @@ const Task = (props) => {
     <div className='task-wrapper'>
       <div className='task-container'>
         <div className='task-name'>{title}</div>
-        <div className='time-start'>
-          {timeStart <= 12 ? `${timeStart} am` : `${timeStart} pm`}
-        </div>
-        <div className='time-end'>
-          {timeEnd > 12 ? `${timeEnd} pm` : `${timeEnd} am`}
-        </div>
+        <div className='time-start'>{timeStart}</div>
+        <div className='time-end'>{timeEnd}</div>
       </div>
 
       <span className='task-remove'>
