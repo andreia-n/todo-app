@@ -53,14 +53,14 @@ button[disabled] {
   margin-bottom: 0px;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 1028px) {
   .new-task_controls {
     display: flex;
     flex-direction: column;
   }
 }
 
-@media (max-width: 1028px) {
+@media (max-width: 760px) {
   .new-task_controls {
     display: flex;
     flex-direction: column;
