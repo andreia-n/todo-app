@@ -8,7 +8,9 @@
   margin-bottom: 1rem;
   text-align: left;
 }
-
+/* .new-task_control {
+  margin-bottom: 20px;
+} */
 .new-task_control label {
   font-weight: bold;
   margin-bottom: 0.5rem;
@@ -17,9 +19,10 @@
 
 .new-task_control input {
   padding: 0.5rem;
+  height: 20px;
   border-radius: 6px;
   border: 1px solid #ccc;
-  width: 200px;
+  width: auto;
   max-width: 100%;
 }
 .edit-task_actions button,
@@ -37,19 +40,29 @@
   cursor: pointer;
   animation: all 4s;
 }
-.new-task_actions button:hover {
-  box-shadow: 0px 3px 25px rgba(0, 0, 0, 0.8);
+
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #b4b2d4;
+  color: #666666;
 }
+
 .error-text {
-  color: #b40e0e;
+  color: #eb1e1e;
+  margin-bottom: 0px;
 }
 
-.invalid input {
-  border: 1px solid #b40e0e;
-  background-color: #fddddd;
+@media (max-width: 1028px) {
+  .new-task_controls {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-.invalid input:focus {
-  border-color: #ff8800;
-  background-color: #fbe8d2;
+@media (max-width: 760px) {
+  .new-task_controls {
+    display: flex;
+    flex-direction: column;
+  }
 }

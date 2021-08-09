@@ -94,8 +94,17 @@ function App() {
           )}
         </div>
         <div className='flex-tasks'>
-          <h2>Tasks for Today</h2>
-          <TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} />
+          {tasks.length === 0 && <h2>No tasks found for today</h2>}
+          {tasks.length !== 0 && (
+            <>
+              <h2>Tasks for Today</h2>
+              <TaskList
+                tasks={tasks}
+                editTask={editTask}
+                deleteTask={deleteTask}
+              />
+            </>
+          )}
         </div>
       </div>
     </div>
