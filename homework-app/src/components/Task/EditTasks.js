@@ -1,92 +1,66 @@
-import React, { useState, useEffect } from 'react';
 import '../Task/AddTasks.css';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 const EditTask = (props) => {
-  console.log(props.curentTask);
-  // const [task, setTask] = useState(props.curentTask);
   const { id, title, timeStart, timeEnd } = props.curentTask;
-  const [enteredTask, setEnteredTask] = useState(title);
-  const [enteredTimeStart, setenteredTimeStart] = useState(timeStart);
-  const [enteredTimeEnd, setenteredTimeEnd] = useState(timeEnd);
-
-  const handlerTask = (e) => {
-    setEnteredTask(e.target.value);
+  // console.log(props.curentTask);
+  const savedValues = {
+    id: id,
+    title: title,
+    timeStart: timeStart,
+    timeEnd: timeEnd,
   };
-
-  const handlerTimeStart = (e) => {
-    setenteredTimeStart(e.target.value);
-  };
-  const handlerTimeEnd = (e) => {
-    setenteredTimeEnd(e.target.value);
-  };
-
-  // const handleInputChange = (event) => {
-  //   const { name, value } = event.target;
-
-  //   setTask({ ...task, [name]: value });
-  // };
-
-  const handlerUpdate = (e) => {
-    e.preventDefault();
-
-    const updatetaskData = {
-      //   id: tasks.length + 1,
-      id: id,
-      title: enteredTask,
-      timeStart: enteredTimeStart,
-      timeEnd: enteredTimeEnd,
-    };
-    props.updateTask(id, updatetaskData);
-  };
-
-  // useEffect(() => {
-  //   setTask(props.curentTask);
-  // }, [props]);
-  useEffect(() => {
-    setEnteredTask(title);
-    setenteredTimeStart(timeStart);
-    setenteredTimeEnd(timeEnd);
-  }, [id, title, timeStart, timeEnd]);
   return (
-    <div className='add-form'>
-      <form onSubmit={handlerUpdate}>
-        <div className='new-task_controls'>
-          <div className='new-task_control'>
-            <label>Task </label>
-            <input
-              type='text'
-              name='task'
-              placeholder='Add your task'
-              value={enteredTask}
-              onChange={handlerTask}
-            />
-          </div>
-          <div className='new-task_control'>
-            <label>Time Start</label>
-            <input
-              type='text'
-              name='timeStart'
-              placeholder='When do you want to start'
-              value={enteredTimeStart}
-              onChange={handlerTimeStart}
-            />
-          </div>
-          <div className='new-task_control'>
-            <label>Time End</label>
-            <input
-              type='text'
-              name='timeEnd'
-              placeholder='When do you want to finish'
-              value={enteredTimeEnd}
-              onChange={handlerTimeEnd}
-            />
-          </div>
-        </div>
-        <div className='edit-task_actions'>
-          <button style={{ marginRight: '.6rem' }}>Update Task</button>
-          <button onClick={() => props.setEditing(false)}>Cancel Update</button>
-        </div>
-      </form>
-    </div>
+    <Formik
+      initialValues={savedValues}
+      enableReinitialize={true}
+      onSubmit={(values) => {
+        const updatetaskData = {
+          id: values.id,
+          title: values.title,
+          timeStart: values.timeStart,
+          timeEnd: values.timeEnd,
+        };
+        props.updateTask(id, updatetaskData);
+      }}
+    >
+      {(formik) => {
+        console.log('formik props', formik);
+        return (
+          <Form>
+            <div className='new-task_controls'>
+              <div className='new-task_control'>
+                <label>Task </label>
+                <Field type='text' name='title' autoComplete='off' />
+                <br></br>
+                <ErrorMessage name='title' />
+              </div>
+              <div className='new-task_control'>
+                <label>Time Start</label>
+                <Field type='time' name='timeStart' autoComplete='off' />
+                <br></br>
+                <ErrorMessage name='timeStart' />
+              </div>
+              <div className='new-task_control'>
+                <label>Time End</label>
+                <Field type='time' name='timeEnd' autoComplete='off' />
+                <br></br>
+                <ErrorMessage name='timeEnd' />
+              </div>
+            </div>
+            <div className='new-task_actions'>
+              <button type='submit'>Update Task</button>
+              <button
+                onClick={() => {
+                  props.setEditing(false);
+                }}
+              >
+                Cancel Update
+              </button>
+            </div>
+          </Form>
+        );
+      }}
+    </Formik>
   );
 };
 

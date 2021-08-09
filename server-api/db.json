@@ -3,20 +3,20 @@
     {
       "id": 1,
       "title": "Learn CSS Grid and Flexbox",
-      "timeStart": 3,
-      "timeEnd": 5
+      "timeStart": "22:30",
+      "timeEnd": "02:28"
     },
     {
       "id": 2,
       "title": "Learn Axios",
-      "timeStart": 4,
-      "timeEnd": 5
+      "timeStart": "13:45",
+      "timeEnd": "17:00"
     },
     {
       "id": 3,
-      "title": "Make an Crud App",
-      "timeStart": 5,
-      "timeEnd": 6
+      "title": "Make a Crud App",
+      "timeStart": "19:32",
+      "timeEnd": "15:32"
     }
   ]
 }
