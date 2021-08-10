@@ -5,6 +5,7 @@ import AddTask from './components/Task/AddTask';
 import EditTask from './components/Task/EditTasks';
 import TaskList from './components/Task/TaskList';
 import Header from './components/Header';
+
 function App() {
   const [tasks, setTasks] = useState([]);
 
@@ -74,6 +75,7 @@ function App() {
   return (
     <div className='container'>
       <Header />
+
       <div className='flex-row'>
         <div className='flex-add'>
           {editing ? (
