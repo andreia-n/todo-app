@@ -2,10 +2,16 @@ body {
   background: #303030;
   color: #fff;
   font-family: 'Otomanopee One', sans-serif;
+  box-sizing: border-box;
 }
-
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .container {
   width: 50%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;

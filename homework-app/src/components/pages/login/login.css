@@ -1,0 +1,48 @@
+.loginContainer {
+  background-color: #000;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.formField {
+  display: flex;
+  flex-direction: column;
+}
+
+.formField label {
+  margin-bottom: 16px;
+}
+.error-mesage {
+  font-size: 10px;
+  color: red;
+  margin-top: 3px;
+  margin-bottom: 14px;
+}
+.defaultInput {
+  margin-bottom: 33px;
+}
+.errorInput {
+  border-color: red;
+}
+.loginContainer input {
+  min-width: 400px;
+  min-height: 40px;
+}
+.loginContainer button {
+  background: transparent;
+  border: 1px solid #fff;
+}
+
+.btnSignin {
+  margin-top: 60px;
+}

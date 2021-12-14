@@ -1,6 +1,15 @@
-.new-task_controls {
+.form {
   display: flex;
-  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+  /* height: 900px; */
+}
+
+.new-task_controls,
+.edit-task_controls {
+  display: flex;
   justify-content: center;
   align-self: center;
   flex-wrap: wrap;
@@ -11,13 +20,15 @@
 /* .new-task_control {
   margin-bottom: 20px;
 } */
-.new-task_control label {
+.new-task_control label,
+.edit-task_control label {
   font-weight: bold;
   margin-bottom: 0.5rem;
   display: block;
 }
 
-.new-task_control input {
+.new-task_control input,
+.edit-task_control input {
   padding: 0.5rem;
   height: 20px;
   border-radius: 6px;
@@ -25,34 +36,63 @@
   width: auto;
   max-width: 100%;
 }
-.edit-task_actions button,
-.new-task_actions button {
+.edit-task_actions button {
   border: none;
   color: white;
   background: #302b63;
   border-radius: 2rem;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.6);
-  padding: 1rem 2rem;
-  margin: 2rem 4.5rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
   cursor: pointer;
   animation: all 4s;
 }
+.new-task_actions button {
+  border: none;
+  color: white;
+  background: #302b63;
+  border-radius: 2rem;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.6);
+  padding: 0.5rem;
+  margin-top: 0.9rem;
+  margin-left: 1rem;
 
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  animation: all 4s;
+  /* position: fixed;
+  top: 41%; */
+}
+.edit-task_actions {
+  display: flex;
+  justify-content: center;
+}
 button:disabled,
 button[disabled] {
   border: 1px solid #999999;
   background-color: #b4b2d4;
   color: #666666;
+  /* margin-top: 1.5rem; */
 }
-
 .error-text {
-  color: #eb1e1e;
-  margin-bottom: 0px;
+  font-size: 10px;
 }
 
+.timePicker {
+  display: flex;
+}
+.timePicker label {
+  margin-left: 0.5rem;
+}
+.timePicker input {
+  margin-right: 1rem;
+}
 @media (max-width: 1028px) {
   .new-task_controls {
     display: flex;
@@ -61,8 +101,23 @@ button[disabled] {
 }
 
 @media (max-width: 760px) {
-  .new-task_controls {
+  .form {
     display: flex;
     flex-direction: column;
+  }
+  .new-task_controls,
+  .edit-task_controls {
+    display: flex;
+    flex-direction: column;
+  }
+  input[type="text"] {
+    width: 90%;
+  }
+  input[type="time"] {
+    width: 80%;
+    margin-right: 0.5rem;
+  }
+  .new-task_actions button {
+    position: inherit;
   }
 }
