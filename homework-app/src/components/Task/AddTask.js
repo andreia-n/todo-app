@@ -32,7 +32,7 @@ const AddTask = (props) => {
     >
       {(formik) => {
         return (
-          <Form>
+          <Form className='form'>
             <div className='new-task_controls'>
               <div className='new-task_control'>
                 <label>Task </label>
@@ -42,21 +42,33 @@ const AddTask = (props) => {
                   {(msg) => <p className='error-text'>{msg}</p>}
                 </ErrorMessage>
               </div>
-              <div className='new-task_control'>
-                <label>Time Start</label>
-                <Field type='time' name='timeStart' autoComplete='off' />
-                <br></br>
-                <ErrorMessage name='timeStart'>
-                  {(msg) => <p className='error-text'>{msg}</p>}
-                </ErrorMessage>
-              </div>
-              <div className='new-task_control'>
-                <label>Time End</label>
-                <Field type='time' name='timeEnd' autoComplete='off' />
-                <br></br>
-                <ErrorMessage name='timeEnd'>
-                  {(msg) => <p className='error-text'>{msg}</p>}
-                </ErrorMessage>
+              <div className='timePicker'>
+                <div className='new-task_control'>
+                  <label>Time Start</label>
+                  <Field
+                    type='time'
+                    name='timeStart'
+                    autoComplete='off'
+                    className='timeInput'
+                  />
+                  <br></br>
+                  <ErrorMessage name='timeStart'>
+                    {(msg) => <p className='error-text'>{msg}</p>}
+                  </ErrorMessage>
+                </div>
+                <div className='new-task_control'>
+                  <label>Time End</label>
+                  <Field
+                    type='time'
+                    name='timeEnd'
+                    autoComplete='off'
+                    className='timeInput'
+                  />
+                  <br></br>
+                  <ErrorMessage name='timeEnd'>
+                    {(msg) => <p className='error-text'>{msg}</p>}
+                  </ErrorMessage>
+                </div>
               </div>
             </div>
             <div className='new-task_actions'>
