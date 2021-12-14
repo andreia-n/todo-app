@@ -2,12 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  box-sizing: border-box;
+  /* height: 900px; */
 }
 
 .new-task_controls,
 .edit-task_controls {
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   align-self: center;
   flex-wrap: wrap;
@@ -34,8 +36,7 @@
   width: auto;
   max-width: 100%;
 }
-.edit-task_actions button,
-.new-task_actions button {
+.edit-task_actions button {
   border: none;
   color: white;
   background: #302b63;
@@ -50,6 +51,24 @@
   cursor: pointer;
   animation: all 4s;
 }
+.new-task_actions button {
+  border: none;
+  color: white;
+  background: #302b63;
+  border-radius: 2rem;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.6);
+  padding: 0.5rem;
+  margin-top: 0.9rem;
+  margin-left: 1rem;
+
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  animation: all 4s;
+  /* position: fixed;
+  top: 41%; */
+}
 .edit-task_actions {
   display: flex;
   justify-content: center;
@@ -61,11 +80,10 @@ button[disabled] {
   color: #666666;
   /* margin-top: 1.5rem; */
 }
-
 .error-text {
-  color: #eb1e1e;
-  margin-bottom: 0px;
+  font-size: 10px;
 }
+
 .timePicker {
   display: flex;
 }
@@ -92,11 +110,14 @@ button[disabled] {
     display: flex;
     flex-direction: column;
   }
-  input[type='text'] {
+  input[type="text"] {
     width: 90%;
   }
-  input[type='time'] {
+  input[type="time"] {
     width: 80%;
     margin-right: 0.5rem;
+  }
+  .new-task_actions button {
+    position: inherit;
   }
 }
